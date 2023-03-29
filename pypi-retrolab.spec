@@ -5,7 +5,7 @@
 #
 Name     : pypi-retrolab
 Version  : 0.3.21
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Summary  : JupyterLab Distribution with a retro look and feel
@@ -98,7 +98,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680130739
+export SOURCE_DATE_EPOCH=1680133072
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -108,6 +108,7 @@ export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -
 export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
+pypi-dep-fix.py . jupyterlab
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
@@ -115,6 +116,7 @@ export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+pypi-dep-fix.py . jupyterlab
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
 popd
@@ -132,6 +134,7 @@ cp %{_builddir}/retrolab-%{version}/retrolab/static/6974.bundle.js.LICENSE.txt %
 cp %{_builddir}/retrolab-%{version}/retrolab/static/7378.bundle.js.LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-retrolab/0036998e52f1b6442c90b9ea6df602bef0294cc5 || :
 cp %{_builddir}/retrolab-%{version}/retrolab/static/7821.bundle.js.LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-retrolab/cd522246a57b87ba54b1b6b92174b9091f70e983 || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
+pypi-dep-fix.py %{buildroot} jupyterlab
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
