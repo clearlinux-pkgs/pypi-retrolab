@@ -5,7 +5,7 @@
 #
 Name     : pypi-retrolab
 Version  : 0.3.21
-Release  : 3
+Release  : 4
 URL      : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Summary  : JupyterLab Distribution with a retro look and feel
@@ -99,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683218131
+export SOURCE_DATE_EPOCH=1693502398
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -111,6 +111,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonl
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . jupyterlab
 pypi-dep-fix.py . nbclassic
+pypi-dep-fix.py . jupyter-server
 python3 -m build --wheel --skip-dependency-check --no-isolation
 pushd ../buildavx2/
 export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
@@ -120,6 +121,7 @@ export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
 export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
 pypi-dep-fix.py . jupyterlab
 pypi-dep-fix.py . nbclassic
+pypi-dep-fix.py . jupyter-server
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
 popd
@@ -139,6 +141,7 @@ cp %{_builddir}/retrolab-%{version}/retrolab/static/7821.bundle.js.LICENSE.txt %
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 pypi-dep-fix.py %{buildroot} jupyterlab
 pypi-dep-fix.py %{buildroot} nbclassic
+pypi-dep-fix.py %{buildroot} jupyter-server
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
