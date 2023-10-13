@@ -5,7 +5,7 @@
 #
 Name     : pypi-retrolab
 Version  : 0.3.21
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Summary  : JupyterLab Distribution with a retro look and feel
