@@ -7,7 +7,7 @@
 #
 Name     : pypi-retrolab
 Version  : 0.3.21
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e8/20/9d05642226797a72f7a04937f6c0e96a3fe3bce8400fbe8611b6ed26ffbc/retrolab-0.3.21.tar.gz
 Summary  : JupyterLab Distribution with a retro look and feel
@@ -101,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1697502517
+export SOURCE_DATE_EPOCH=1697503669
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
